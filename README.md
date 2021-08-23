@@ -1,14 +1,14 @@
 <p align="center">
-  <img src="https://codingly-assets.s3-eu-west-1.amazonaws.com/Codingly+Logo.png" width="200px" height="200px"/>
-  </br>
-  <a href="https://codingly.io">codingly.io</a>
-  <br/>
+    <img src="https://codingly-assets.s3-eu-west-1.amazonaws.com/Codingly+Logo.png" width="200px" height="200px"/>
+    </br>
+    <a href="https://codingly.io">codingly.io</a>
+    <br/>
 </p>
 <h1 align="center">Serverless Framework Auth0 Authorizer</h1>
 <p align="center">
-  <i><strong>A modern, ES6-friendly Lambda Authorizer ready for integration with Serverless Framework and Auth0.</strong></i>
-  <br/>
-  Based on the <a href="https://github.com/serverless/examples/tree/master/aws-node-auth0-custom-authorizers-api">serverless/examples/aws-node-auth0-custom-authorizers-api</a> example.
+    <i><strong>A modern, ES6-friendly Lambda Authorizer ready for integration with Serverless Framework and Auth0.</strong></i>
+    <br/>
+    Based on the <a href="https://github.com/serverless/examples/tree/master/aws-node-auth0-custom-authorizers-api">serverless/examples/aws-node-auth0-custom-authorizers-api</a> example.
 </p>
 
 ## Features
@@ -81,3 +81,17 @@ functions:
 ```
 
 If everything was set up correctly, all incoming requests to your `someFunction` Lambda will first be authorized. You can find the JWT claims at `event.requestContext.authorizer`.
+
+#### Get user token JWT:
+
+Use the following curl command:
+
+```
+curl --location --request POST 'https://YOUR_AUTH0_DOMAIN/oauth/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'client_id=YOUR_AUTH0_CLIENT_ID' \
+--data-urlencode 'username=YOUR_USERNAME' \
+--data-urlencode 'password=YOUR_PASSWORD' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'scope=openid'
+```
